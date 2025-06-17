@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from ai_summary import generate_mock_summary  # Correct path assuming you’re in HavenAI root
+from app.ai_summary import generate_mock_summary  # ✅ CORRECT
 
 st.set_page_config(page_title="HavenAI", layout="wide")
 
