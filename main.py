@@ -1,59 +1,37 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib as mpl
-from ai_summary import generate_mock_summary  # Adjust if your import path is different
+import os
 
-# Set Streamlit config
+# Relative import since you're running from HavenAI root
+from app.ai_summary import generate_mock_summary
+
+# Set page configuration
 st.set_page_config(page_title="HavenAI", layout="wide")
 
-# Sidebar Theme + Language Toggle
+# Sidebar
 with st.sidebar:
     st.markdown("### 🌙 Theme")
     selected_theme = st.radio("Theme", ["Dark", "Light"], index=0)
-
+    
     st.markdown("### 🌐 Language / 言語 / Idioma / 语言")
     st.selectbox("Language", ["English", "日本語", "Español", "中文"], index=0)
 
-# Apply dynamic styling based on theme
+# Apply theme via custom background colors for plots
 if selected_theme == "Dark":
-    bg_color = "#0e1117"
-    text_color = "#FFFFFF"
-    accent_color = "#1f77b4"
-    mpl.style.use("dark_background")
-    df_style = {"backgroundColor": "#0e1117", "color": "#FFFFFF"}
+    background_color = "#0E1117"
+    font_color = "#FFFFFF"
+    plot_bar_color = "#64b5f6"
 else:
-    bg_color = "#FFFFFF"
-    text_color = "#000000"
-    accent_color = "#007ACC"
-    mpl.style.use("default")
-    df_style = {"backgroundColor": "#FFFFFF", "color": "#000000"}
+    background_color = "#FFFFFF"
+    font_color = "#000000"
+    plot_bar_color = "#1976d2"
 
-# Inject CSS styling
-st.markdown(
-    f"""
-    <style>
-        body, .stApp {{
-            background-color: {bg_color};
-            color: {text_color};
-        }}
-        .stButton>button {{
-            background-color: {accent_color};
-            color: white;
-            border-radius: 8px;
-            padding: 6px 16px;
-            font-weight: bold;
-        }}
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Title & Subtitle
+# Title and description
 st.title("🔐 HavenAI - AI-Powered Log Analyzer")
 st.markdown("Upload logs. Get instant threat insights. No cloud required.")
 
-# Upload CSV log file
+# File uploader
 uploaded_file = st.file_uploader("📤 Upload your log file (CSV format)", type=["csv"])
 
 if uploaded_file:
@@ -66,38 +44,43 @@ if uploaded_file:
             unsafe_allow_html=True,
         )
 
-        # Preview logs
+        # Preview
         st.subheader("📄 Preview of Uploaded Logs")
-        st.dataframe(df.style.set_properties(**df_style))
+        st.dataframe(df.head(10), use_container_width=True)
 
-        # Event Breakdown
+        # Event breakdown chart
         st.subheader("📊 Event Type Breakdown")
         if "event_type" in df.columns:
-            event_counts = df["event_type"].value_counts()
-            fig, ax = plt.subplots()
-            event_counts.plot(kind="bar", color=accent_color, ax=ax)
-            ax.set_ylabel("Count")
-            ax.set_title("Event Types")
+            event_counts = df["event_type"].value_counts().sort_index()
+            fig, ax = plt.subplots(figsize=(6, 3))
+            event_counts.plot(kind="bar", ax=ax, color=plot_bar_color)
+            ax.set_xlabel("Event Type", fontsize=10, color=font_color)
+            ax.set_ylabel("Count", fontsize=10, color=font_color)
+            ax.tick_params(axis="x", labelsize=9, rotation=0, colors=font_color)
+            ax.tick_params(axis="y", labelsize=9, colors=font_color)
+            fig.patch.set_facecolor(background_color)
+            ax.set_facecolor(background_color)
+            fig.tight_layout()
             st.pyplot(fig)
         else:
             st.warning("⚠️ No 'event_type' column found in uploaded file.")
 
-        # Top Source IPs
+        # Top source IPs
         if "source_ip" in df.columns:
             st.subheader("🌐 Top Source IPs")
             top_ips = df["source_ip"].value_counts().head(10)
-            st.bar_chart(top_ips)
-        
-        # AI Summary
+            st.dataframe(top_ips, use_container_width=True)
+
+        # AI Summary (Demo)
         st.subheader("🤖 AI Summary (Demo Mode)")
         with st.expander("Show AI-generated insights"):
             summary = generate_mock_summary(df)
             st.markdown(summary)
 
-        # Download Processed CSV
+        # Download
         st.subheader("📥 Export")
         csv = df.to_csv(index=False).encode("utf-8")
-        st.download_button("Download Processed CSV", csv, file_name="processed_log.csv")
+        st.download_button("Download Cleaned CSV", csv, file_name="processed_log.csv")
 
     except Exception as e:
         st.error(f"🚫 Error processing file: {e}")
