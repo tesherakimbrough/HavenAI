@@ -1,5 +1,5 @@
 streamlit
 pandas
-matplotlib
+altair
+numpy
 scikit-learn
-python-dotenv
