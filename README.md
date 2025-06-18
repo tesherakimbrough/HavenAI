@@ -4,7 +4,8 @@
 
 ![HavenAI GitHub Banner](assets/HavenAI-Github.png)
 
-![Built with Lovable](https://lovable.dev/badge.svg)
+[![Built with Lovable](https://lovable.dev/badge-dark.svg)](https://lovable.dev)
+
 ---
 
 ### 🎯 Problem & Solution
