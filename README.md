@@ -8,27 +8,28 @@
 
 ---
 
-### 🎯 Problem & Solution
-
-Security log analysis is often complex and requires expensive cloud services. **HavenAI** brings enterprise-grade log analysis to your desktop, using AI to detect threats while keeping sensitive data private.
-
----
-
 ### 📝 Overview
 
 **HavenAI** is a local-first log analysis tool that combines AI-driven threat detection, lightweight setup, and a beautiful interface for security practitioners and engineers. It’s privacy-focused, works offline, and delivers insights in seconds—without sending your logs to third-party clouds.
 
 ---
 
-### 🛠️ Built With
+### ⚡ Getting Started
 
-- 🐍 Python 3.11  
-- 📦 pandas, numpy for log processing  
-- 🤖 scikit-learn for AI anomaly detection  
-- 📊 Altair / Plotly for interactive charts  
-- 🎨 Streamlit for frontend UI  
-- 🧪 pytest for testing  
-- 💅 Rich CLI support (optional)
+To run HavenAI locally:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+**Sample logs format:**
+
+```csv
+timestamp,source_ip,event_type
+2025-06-01T12:00:00Z,192.168.1.1,login_success
+2025-06-01T12:05:00Z,10.0.0.5,login_failure
+```
 
 ---
 
@@ -44,33 +45,6 @@ Security log analysis is often complex and requires expensive cloud services. **
 
 ---
 
-### ⚡ Getting Started
-
-To run locally:
-
-```bash
-git clone https://github.com/tesherakimbrough/havenai.git
-cd havenai
-pip install -r requirements.txt
-streamlit run app/main.py
-```
-
-To use without Streamlit:
-
-```bash
-python main.py
-```
-
-**Sample logs format:**
-
-```csv
-timestamp,source_ip,event_type
-2025-06-01T12:00:00Z,192.168.1.1,login_success
-2025-06-01T12:05:00Z,10.0.0.5,login_failure
-```
-
----
-
 ### 🔍 Core Features
 
 - ✅ Upload CSV log files with zero setup
@@ -79,6 +53,18 @@ timestamp,source_ip,event_type
 - 🔒 Private, local-first architecture—no cloud required
 - 🌙 Light/Dark toggle theme
 - 🧩 Extensible with plugins for different log formats
+
+---
+
+### 🛠️ Built With
+
+- 🐍 Python 3.11  
+- 📦 pandas, numpy for log processing  
+- 🤖 scikit-learn for AI anomaly detection  
+- 📊 Altair / Plotly for interactive charts  
+- 🎨 Streamlit for frontend UI  
+- 🧪 pytest for testing  
+- 💅 Rich CLI support (optional)
 
 ---
 
