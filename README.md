@@ -1,100 +1,147 @@
 # 🔐 HavenAI – AI-Powered Log Analyzer
 
-**HavenAI** helps security professionals and developers gain instant insights from log files – no cloud keys, no engineering team required.
+**HavenAI** empowers security professionals and developers to gain instant insights from log files—no cloud keys, no engineering team required.
+
+![HavenAI GitHub Banner](assets/HavenAI-Github.png)
+
+---
 
 ### 🎯 Problem & Solution
-Security log analysis is often complex and requires expensive cloud services. HavenAI brings enterprise-grade log analysis to your desktop, using AI to detect threats while keeping sensitive data private.
+
+Security log analysis is often complex and requires expensive cloud services. **HavenAI** brings enterprise-grade log analysis to your desktop, using AI to detect threats while keeping sensitive data private.
+
+---
 
 ### 📝 Overview
-HavenAI demonstrates:
-- 🧠 Advanced AI implementation
-- 🔒 Security-first architecture
-- 💻 Clean, maintainable Python code
-- 📊 Efficient data processing
-- 🎨 Modern CLI design
 
-### 🛠️ Technical Stack
-- Python 3.11
-- pandas & numpy for data processing
-- scikit-learn for anomaly detection
-- Rich for beautiful CLI interfaces
-- pytest for comprehensive testing
+**HavenAI** is a local-first log analysis tool that combines AI-driven threat detection, lightweight setup, and a beautiful interface for security practitioners and engineers. It’s privacy-focused, works offline, and delivers insights in seconds—without sending your logs to third-party clouds.
 
-### 💻 Quick Start
+---
+
+### 🛠️ Built With
+
+- 🐍 Python 3.11  
+- 📦 pandas, numpy for log processing  
+- 🤖 scikit-learn for AI anomaly detection  
+- 📊 Altair / Plotly for interactive charts  
+- 🎨 Streamlit for frontend UI  
+- 🧪 pytest for testing  
+- 💅 Rich CLI support (optional)
+
+---
+
+### 📸 Screenshots
+
+> *(Replace paths with your actual image files in `/assets`)*
+
+![HavenAI Dashboard](assets/screenshot_dashboard.png)  
+*Dashboard with log insights, chart visualizations, and local AI summaries.*
+
+![Log Upload](assets/screenshot_upload.png)  
+*Drag & drop interface for uploading logs.*
+
+---
+
+### ⚡ Getting Started
+
+To run locally:
 
 ```bash
 git clone https://github.com/tesherakimbrough/havenai.git
 cd havenai
 pip install -r requirements.txt
-
-# If using Streamlit interface:
 streamlit run app/main.py
+```
 
-# Or, to run as a standard Python script:
+To use without Streamlit:
+
+```bash
 python main.py
 ```
 
-### 📸 Screenshots
+**Sample logs format:**
 
-Here’s a preview of HavenAI in action:
-
-![Dashboard Screenshot](assets/screenshot_dashboard.png)
-*HavenAI dashboard showing real-time log analysis and threat detection.*
-
-![Log Upload Screenshot](assets/screenshot_upload.png)
-*Simple interface for uploading and analyzing log files.*
-
-<!-- Replace the image paths with your actual screenshot file locations. -->
-
-### 🔍 Core Features
-1. **Intelligent Analysis**
-   - Pattern recognition
-   - Anomaly detection
-   - Threat identification
-
-2. **Privacy & Security**
-   - Local-first architecture
-   - Zero data transmission
-   - Secure log handling
-
-3. **Developer Experience**
-   - Clean code architecture
-   - 90%+ test coverage
-   - Comprehensive documentation
-
-### 📊 Sample Analysis
 ```csv
 timestamp,source_ip,event_type
 2025-06-01T12:00:00Z,192.168.1.1,login_success
 2025-06-01T12:05:00Z,10.0.0.5,login_failure
-2025-06-01T13:15:00Z,10.0.0.5,login_failure
-2025-06-01T14:00:00Z,192.168.1.1,login_success
 ```
 
-### 🚀 Future Roadmap
-- [ ] Real-time log monitoring
-- [ ] Custom rule engine
-- [ ] Advanced visualization
-- [ ] API integration
+---
+
+### 🔍 Core Features
+
+- ✅ Upload CSV log files with zero setup
+- 🤖 AI-generated summary (demo mode or local-only)
+- 📊 Interactive breakdown of events and top IPs
+- 🔒 Private, local-first architecture—no cloud required
+- 🌙 Light/Dark toggle theme
+- 🧩 Extensible with plugins for different log formats
+
+---
+
+### 🌟 What Makes It Different?
+
+- **Privacy-first:** Works entirely offline by default
+- **Fast insights:** No learning curve, no login, no setup
+- **Beautiful UX:** Streamlit + responsive UI
+- **Developer focus:** Easily inspect, extend, and deploy
+
+---
+
+### 🚀 Roadmap
+
+- [ ] Local LLM integration (Ollama, WebAssembly-based AI)
+- [ ] Support for .evtx, .json, and Apache/Nginx log formats
+- [ ] Real-time streaming analysis
+- [ ] Plugin system for custom parsers
+- [ ] Optional cloud sync (with full user control)
+
+---
+
+### 💬 AI Summary Example (Demo Mode)
+
+This summary is generated locally as a placeholder demo:
+
+```
+This log file contains 1,238 total entries.
+- 82% are successful login events.
+- 17% are failed logins, mostly from IP 192.168.1.44.
+- Unusual activity detected on June 1 at 03:12 AM — multiple failed logins from a new subnet.
+Recommendation: Investigate IP 10.0.3.91 and implement rate limiting on exposed endpoints.
+```
+
+---
+
+### 🧠 Designed For
+
+- Solo security researchers
+- Red/Blue teams during analysis
+- Developers building detection pipelines
+- Privacy-conscious organizations (finance, health, gov)
+
+---
 
 ### 🏆 Project Highlights
-- Built for Lovable.dev Shipped Challenge
-- Focus on code quality and best practices
-- Solving real-world security challenges
-- Privacy-first approach
+
+- Built for the Lovable.dev Shipped Challenge
+- Designed & engineered in 7 days
+- Future-focused architecture
+- Fully open source & extensible
+
+---
 
 ### 📄 License
 
-**MIT License**
-
+**MIT License**  
 You are free to use, modify, and distribute this project. Attribution is appreciated but not required.
 
 ---
 
 ### 🙌 Connect
 
-Built with ❤️ by Teshera Kimbrough for the Lovable.dev Shipped Challenge.
+Built with ❤️ by Teshera Kimbrough
 
-Want to connect, hire, or collaborate?
-
-🔗 [Connect on LinkedIn](https://www.linkedin.com/in/tesherakimbrough)
+🔗 [Project Site](https://lovable.dev/projects/7096f6b9-1d2c-4b62-8ebd-7a77dd53f75e)  
+🐙 [GitHub](https://github.com/tesherakimbrough)  
+📩 Available for contract, collaboration, or full-time roles
